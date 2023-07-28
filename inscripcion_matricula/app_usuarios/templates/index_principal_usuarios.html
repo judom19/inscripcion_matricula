@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block extraheader %}
+{% endblock extraheader %}
+
+{% block content %}
+<hr>
+<br>
+<br>
+    <div class="row">
+        <!-- Menú lateral -->
+        <div class="col-md-3">
+            <ul class="card p-2">
+                <li class="list-group-item">
+                    <a href="{% url 'app_usuarios:index_usuarios' %}" class="nav-link"><h5>Usuarios</h5></a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'app_usuarios:listado' %}" class="nav-link"><h5>Listado</h5></a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'app_usuarios:nuevo' %}" class="nav-link"><h5>Mantenimiento Usuarios </h5></a>
+                </li>
+            </ul>
+        </div>
+        
+
+        <!-- Información -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4>Certificaciones:</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Horarios</li>
+                        <li class="list-group-item">Calendario de actividades</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Descarga formulario -->
+        <div class="col-md-2">
+            <div class="card bg-light">
+                <div class="card-header text-dark text-center">
+                    <h4>Descarga ficha de inscripción</h4>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="btn btn-primary btn-block">Descargar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<hr>
+{% endblock content %}

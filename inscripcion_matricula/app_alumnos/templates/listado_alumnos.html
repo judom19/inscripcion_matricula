@@ -1,0 +1,81 @@
+{%extends 'index_principal.html' %} 
+
+{% load static %}
+
+{% block extraheader %}
+
+<link rel="stylesheet" href="{% static 'css/datatables.min.css '%}">
+{% endblock extraheader %} {% block content %}
+
+<div class="container col-sm-9">
+  <div class="row">
+    <div class="table-responsive ">
+      <div class="panel panel-primary ">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class=""></i><center>Listado de Alumnos Inscritos</center></h3>
+        </div>
+      </div>
+      <table class="table display nowrap table-responsive table-bordered table-hover table-condensed display " table id="Jtabla"  cellspacing="0" width="100  %">
+        <thead>
+          <tr class="success">
+            <th >CODIGO</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Docente a cargo</th>
+            <th>Ultimo lugar de estudios</th>
+            <th>Comentarios del alumno</th>
+            {% if perms.alumnos.changue_alumno %}
+            <th>Editar </th>
+              {% endif %}
+            <th>Borrar </th>
+            <th>Detalles</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% if object_list %} {% for alumno in object_list%}
+            <td> {{alumno.id}}</td>
+            <td> {{alumno.nombre}}</td>
+            <td> {{alumno.apellido}}</td>
+            <td> {{alumno.fecha_nacimiento}}</td>
+            <td> {{alumno.docente_encargado}}</td>
+            <td>{{alumno.ultimo_centro_de_estudio}}</td>
+            <td>{{alumno.comentarios}}</td>
+            {% if perms.alumnos.changue_alumno %}
+            <td>
+              <a href="{% url 'app_alumnos:editar' alumno.id %}" class="btn btn-primary "><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+            </td>
+            {% endif %}
+            <td>
+              <a href="{% url 'app_alumnos:borrar' alumno.id %}" class="btn btn-danger btn-destroy "><span class="glyphicon glyphicon-pencil"></span> Borrar</a>
+            </td>
+            <td>
+              <a href="{% url 'app_alumnos:detalles' alumno.id %}" class="btn btn-info "><span class="glyphicon glyphicon-pencil"></span> Detalles</a>
+            </td>
+          </tr>
+
+          {%endfor%} {%else%}
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <h3><strong>No hay registros de alumnos</strong></h3>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- <script src="{% static 'TableFilter/tablefilter.js'%}"></script> -->
+<script src="{% static 'js/filtro_Jtabla_Id.js'%}"></script>
+
+<!-- <script src="{% static 'js/fecha.js'%}"></script> -->
+<!--llamando el archivo de fitro DataTables-->
+
+{% endblock %}

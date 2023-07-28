@@ -1,0 +1,36 @@
+{% extends 'index_principal.html' %}
+
+{% load static %}
+
+{% block extraheader %}
+{% endblock extraheader%}
+
+{% block content %}
+	<div class="container col-xl-10">
+		<br>
+		{% load crispy_forms_tags %}
+		<h3 class="panel-title"><i class=""></i><center>Registro de los alumnos</center></h3>
+		<hr>
+		<form method="post" action="{% url 'app_alumnos:nuevo' %}">
+			{% csrf_token %}
+			
+			<div class="row">
+				<div class="col">
+					{{ form.nombre | as_crispy_field }}
+					{{ form.apellido | as_crispy_field }}
+					{{ form.fecha_nacimiento | as_crispy_field }}
+					{{ form.docente_encargado | as_crispy_field }}
+					<br><br><br><br><br>
+					<button type="submit" class="btn btn-primary btn-block">Guardar Registro</button>
+				</div>
+				<div class="col">
+					{{ form.direccion_actual | as_crispy_field }}
+					{{ form.telefono_actual_casa | as_crispy_field }}
+					{{ form.ultimo_centro_de_estudio | as_crispy_field }}
+					{{ form.comentarios | as_crispy_field }}
+				</div>
+			</div>		
+		</form>
+	</div>
+	<hr>
+{% endblock content %}

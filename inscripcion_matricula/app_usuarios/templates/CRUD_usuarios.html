@@ -1,0 +1,23 @@
+{% extends 'index_principal_usuarios.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extraheader %}
+{% endblock %}
+  
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h3 class="card-title"><i class="fas fa-user"></i> Registre aquí los Usuarios</h3>
+        </div>
+        <div class="card-body">
+          {% crispy form %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

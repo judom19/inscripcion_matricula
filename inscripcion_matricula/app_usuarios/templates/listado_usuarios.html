@@ -1,0 +1,56 @@
+{% extends 'index_principal_usuarios.html' %}
+{% load static %}
+
+{% block extraheader %}
+<link rel="stylesheet" href="{% static 'css/datatables.min.css' %}">
+{% endblock extraheader %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title">Listado de Usuarios</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover table-condensed" id="Jtabla" cellspacing="0" width="100%">
+              <thead>
+                <tr class="success">
+                  <th>Nombre de Usuario</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Email de Recuperación</th>
+                  <th>Fecha de Ingreso al Sistema</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if object_list %}
+                {% for usuario in object_list %}
+                <tr>
+                  <td>{{ usuario.username }}</td>
+                  <td>{{ usuario.first_name }}</td>
+                  <td>{{ usuario.last_name }}</td>
+                  <td>{{ usuario.email }}</td>
+                  <td>{{ usuario.last_login }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="5">
+                    <h3 class="text-center"><strong>No hay usuarios registrados</strong></h3>
+                  </td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/filtro_Jtabla_Id.js' %}"></script>
+{% endblock %}

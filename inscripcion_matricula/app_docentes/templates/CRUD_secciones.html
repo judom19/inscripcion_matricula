@@ -1,0 +1,39 @@
+{% extends 'index_principal_secciones.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-1 col-md-5">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title"><i class=""></i><center>Crear Secciones</center></h3>
+				</div>
+			</div>
+			<form method="post">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="turno">Turno:</label>
+					<select class="form-control" id="turno" name="turno">
+						<option value="MATUTINO">MATUTINO</option>
+						<option value="TARDE">TARDE</option>
+						<option value="FIN DE SEMANA">FIN DE SEMANA</option>
+					</select>
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="nombre_seccion">Nombre:</label>
+					<input type="text" class="form-control" id="nombre_seccion" name="nombre_seccion" placeholder="Nombre de la seccion">
+				</div>
+				<br>
+				<div class="form-group">
+					<label for="cupos_por_seccion">Cupos:</label>
+					<input type="text" class="form-control" id="cupos_por_seccion" name="cupos_por_seccion" placeholder="Asignar número de cupos">
+				</div>
+				<br>
+				<button type="submit" class="btn btn-primary">Guardar</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

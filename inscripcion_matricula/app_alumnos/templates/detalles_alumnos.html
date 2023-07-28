@@ -1,0 +1,66 @@
+{% extends 'index_principal.html' %}
+
+{% block extraheader %}
+{% endblock extraheader %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class=""></i><center><strong>Nombre: </strong>{{alumno.nombre}} {{alumno.apellido}} <strong>ID: </strong>{{alumno.id}}</center></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="id_nombre">Nombre de Alumno:</label>
+          <input value="{{alumno.nombre}}" type="text" class="form-control" id="id_nombre" name="nombre" placeholder="Nombre de alumno" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="id_apellido">Apellido de Alumno:</label>
+          <input value="{{alumno.apellido}}" type="text" class="form-control" id="id_apellido" name="apellido" placeholder="Apellido de alumno" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="id_fecha_nacimiento">Fecha de Nacimiento:</label>
+          <input value="{{alumno.fecha_nacimiento}}" class="form-control" type="text" id="id_fecha_nacimiento" name="fecha_nacimiento" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="id_docente_encargado">Docente a Cargo:</label>
+          <input value="{{alumno.docente_encargado}}" type="text" class="form-control" id="id_docente_encargado" name="docente_encargado" disabled>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="id_direccion_actual">Dirección del alumno:</label>
+          <input value="{{alumno.direccion_actual}}" type="text" class="form-control" id="id_direccion_actual" name="direccion_actual" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="id_telefono_actual_casa">Teléfono de Casa:</label>
+          <input value="{{alumno.telefono_actual_casa}}" type="text" class="form-control" id="id_telefono_actual_casa" name="telefono_actual_casa" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="id_ultimo_centro_de_estudio">Último Centro de Estudio:</label>
+          <input value="{{alumno.ultimo_centro_de_estudio}}" type="text" class="form-control" id="id_ultimo_centro_de_estudio" name="ultimo_centro_de_estudio" disabled>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <a href="{% url 'app_alumnos:listado'%}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Volver al listado</a>
+</div>
+{% endblock %}
